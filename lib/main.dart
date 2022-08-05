@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 void main() {
-  runApp(MaterialApp(
+  runApp(const MaterialApp(
     initialRoute: "/",
     debugShowCheckedModeBanner: false,
     home: Home(),
@@ -60,15 +60,15 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.grey[800],
-        title: Text("Anime Quotes"),
+        title: const Text("Anime Quotes"),
       ),
       body: loading
-          ? SpinKitFadingCube(
+          ? const SpinKitFadingCube(
               color: Colors.white,
               size: 50.0,
             )
           : Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8.0),
               child: Center(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -77,16 +77,17 @@ class _HomeState extends State<Home> {
                     Text(
                       quote,
                       textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.white, fontSize: 24.0),
+                      style:
+                          const TextStyle(color: Colors.white, fontSize: 24.0),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10.0,
                     ),
                     Text(
                       "-$author",
                       style: TextStyle(color: Colors.grey[400]),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20.0,
                     ),
                     ElevatedButton.icon(
@@ -95,8 +96,8 @@ class _HomeState extends State<Home> {
                         onPressed: () {
                           getQuote();
                         },
-                        icon: Icon(Icons.refresh),
-                        label: Text("Change")),
+                        icon: const Icon(Icons.refresh),
+                        label: const Text("Change")),
                   ],
                 ),
               ),
