@@ -21,6 +21,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   String quote = '';
   String author = '';
+  String anime = "";
   bool loading = false;
 
   void getQuote() async {
@@ -31,14 +32,17 @@ class _HomeState extends State<Home> {
       Uri url = Uri.http('animechan.vercel.app', '/api/random');
       Response result = await get(url);
       Map res = jsonDecode(result.body);
+      // print(res);
       setState(() {
         quote = res['quote'];
         author = res['character'];
+        anime = res['anime'];
       });
     } catch (e) {
       setState(() {
         quote = "Could not connect to server";
         author = "";
+        anime = "";
       });
     }
     ;
@@ -68,12 +72,19 @@ class _HomeState extends State<Home> {
               size: 50.0,
             )
           : Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(20.0),
               child: Center(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
+                    Text(
+                      anime,
+                      style: TextStyle(color: Colors.grey[400], fontSize: 24.0),
+                    ),
+                    const SizedBox(
+                      height: 10.0,
+                    ),
                     Text(
                       quote,
                       textAlign: TextAlign.center,
